@@ -49,7 +49,7 @@ pub fn parse_tags(cmd: &str) -> Option<AllOrOne<u32>> {
     }
 }
 
-pub fn parse_command(cmd: &str) -> Command {
+pub fn parse_command(cmd: &str) -> Command<'_> {
     let parts: Vec<&str> = cmd.split(' ').collect();
 
     // check for a Rivertile command
