@@ -1,5 +1,5 @@
 use crate::{
-    parse::{parse_command, Command, Operation},
+    parse::{Command, Operation, parse_command},
     tile::TileType,
 };
 
