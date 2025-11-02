@@ -4,17 +4,21 @@ mod tile;
 
 use config::ConfigStorage;
 use parse::{parse_output, parse_tags, split_commands};
-use river_layout_toolkit::{run, GeneratedLayout, Layout, Rectangle};
+use river_layout_toolkit::{GeneratedLayout, Layout, Rectangle, run};
 use std::{convert::Infallible, env, iter};
-use tile::{flip, rotate, LeftPrimary, Monocle, Padded, Params, Tile, TileType};
+use tile::{LeftPrimary, Monocle, Padded, Params, Tile, TileType, flip, rotate};
 
 use crate::parse::AllOrOne;
 
 fn main() {
     let all_args: Vec<String> = env::args().collect();
 
-    if all_args.len() > 1 && (all_args[1] == "-version" || all_args[1] == "--version") {
-        println!("{}", env!("CARGO_PKG_VERSION"));
+    if all_args.len() > 1 {
+        match all_args[1].as_str() {
+            "-h" => println!("usage: filtile [options]"),
+            "-version" => println!("{}", env!("CARGO_PKG_VERSION")),
+            _ => eprintln!("error: unknown option '{}'", all_args[1]),
+        }
         return;
     }
 
