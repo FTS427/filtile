@@ -10,15 +10,29 @@ use self::{
 };
 
 use river_layout_toolkit::{GeneratedLayout, Layout, Rectangle};
-use std::{convert::Infallible, iter};
+use std::iter;
 
 pub struct FilTile {
     pub tag_log: TagLog,
     pub configs: ConfigStorage,
 }
 
+#[derive(Debug)]
+pub struct LayoutError {
+    e: String,
+}
+
+impl std::fmt::Display for LayoutError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let e = &self.e;
+        write!(f, "{e}")
+    }
+}
+
+impl std::error::Error for LayoutError {}
+
 impl Layout for FilTile {
-    type Error = Infallible;
+    type Error = LayoutError;
 
     const NAMESPACE: &'static str = "filtile";
 
