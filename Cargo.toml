@@ -1,6 +1,6 @@
 [package]
 authors = ["Phil Kulak"]
-categories = ["command-line-utilities", ]
+categories = ["command-line-utilities"]
 description = "A layout manager for the River window manager."
 keywords = ["river", "wayland"]
 license = "GPL-3.0"
